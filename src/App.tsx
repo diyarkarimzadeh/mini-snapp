@@ -108,7 +108,6 @@ const MapComponent: React.FC = () => {
       style={{ height: '90vh' }}
     >
       <TileLayer
-        detectRetina
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
