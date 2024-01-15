@@ -1,9 +1,19 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
-import { LocationEvent } from 'leaflet';
+import LocMarker from './assets/locmarker.svg';
+import L, { LocationEvent } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const MapComponent: React.FC = () => {
+  const myIcon = L.icon({
+    iconUrl: LocMarker,
+    iconSize: [45, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41],
+  });
+
   const center = [35.700444, 51.336264];
   const markerRef = useRef<any>(null);
   const mapRef = useRef<any>(null);
@@ -87,7 +97,7 @@ const MapComponent: React.FC = () => {
       };
     }, [map]);
 
-    return <Marker position={map.getCenter()} ref={markerRef} />;
+    return <Marker position={map.getCenter()} ref={markerRef} icon={myIcon} />;
   };
 
   return (
@@ -103,7 +113,7 @@ const MapComponent: React.FC = () => {
       />
       {finalMarkers.length < 2 && <CenterMarker />}
       {finalMarkers.map((marker, index) => (
-        <Marker key={index} position={marker as any} />
+        <Marker key={index} position={marker as any} icon={myIcon} />
       ))}
       <div
         style={{
