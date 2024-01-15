@@ -95,7 +95,7 @@ const MapComponent: React.FC = () => {
       ref={mapRef}
       center={center as any}
       zoom={17}
-      style={{ height: '100vh' }}
+      style={{ height: '90vh' }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
